@@ -26,12 +26,10 @@ class Reminder {
                 content.body = reminder.message ?? "Something to do"
                 content.sound = UNNotificationSound.default
                 
-                var dateComponents = self.getDateComponents(date: reminder.time!, beforeMins: 0)
+                var dateComponents = self.getDateComponents(date: reminder.time!, beforeMins: 5)
                 
                 //converting timezone to indian timezone (responsible for triggering notification according to indian time)
                 dateComponents.timeZone = TimeZone(abbreviation: "GMT")
-                
-                print("date components are ",dateComponents)
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 
